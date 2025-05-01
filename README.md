@@ -1,12 +1,98 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📚 Smart E-Library – Frontend
 
-Currently, two official plugins are available:
+Welcome to the frontend of the **Smart E-Library System**, a modern and responsive web-based platform for managing book transactions, student verification, and digital book browsing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is part of the Smart E-Library full-stack system, developed using **React**, **Tailwind CSS**, **Shadcn UI**, and **Lucide Icons**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- 🔐 Student and Admin Authentication
+- 📖 Book browsing by category, title, author
+- 🧠 Intelligent search bar with filtering
+- 💻 Responsive layout for all screen sizes
+- 🗂️ Student Dashboard: View issued books, return history
+- 🛠️ Admin Dashboard: Verify student transactions, manage inventory
+- 📦 Animated Modals and Interactive UI using **Framer Motion**
+- 🧪 Grace period and penalty tracking
+
+---
+
+## 🛠️ Tech Stack
+
+| Category       | Tools / Libraries                          |
+|----------------|---------------------------------------------|
+| Frontend       | React, Vite                                 |
+| Styling        | Tailwind CSS, Shadcn UI                     |
+| Icons          | Lucide React                                |
+| Animations     | Framer Motion                               |
+| HTTP Requests  | Axios                                       |
+| Notifications  | React Hot Toast                             |
+| State Handling | React Hooks (useState, useEffect)           |
+
+---
+
+## 📂 Project Structure
+
+```
+frontend/
+│
+├── public/                  # Static assets
+├── src/
+│   ├── components/          # Reusable UI components (Navbar, Modals, Cards)
+│   ├── pages/               # Route-based pages (Library, Dashboard, Verify)
+│   ├── utils/               # Helper functions and constants
+│   ├── App.jsx              # Main application wrapper
+│   └── main.jsx             # Entry point
+│
+├── package.json
+└── tailwind.config.js
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/smart-e-library-frontend.git
+cd smart-e-library-frontend
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Create `.env` File
+
+```bash
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+> Replace with your backend URL if hosted elsewhere.
+
+### 4. Run the App
+
+```bash
+npm run dev
+```
+
+Visit: `http://localhost:5173`
+
+---
+
+## 🔗 Backend Link
+
+If you're looking for the backend repo:
+[Smart E-Library Backend Repository](https://github.com/your-username/smart-e-library-backend)
+
+---
+
+## 📜 License
+
+This project is open source and available under the [MIT License](LICENSE).
