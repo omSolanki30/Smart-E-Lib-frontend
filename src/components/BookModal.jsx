@@ -17,28 +17,21 @@ const BookModal = ({ book, onClose, onIssued }) => {
 
   const handleIssue = async () => {
     const days = customDays ? parseInt(customDays) : 7;
-  
+
     if (days > 20) {
       toast.error("You can only issue a book for a maximum of 20 days");
       return;
     }
-  
+
     const issueDate = new Date();
     let returnDate = new Date(issueDate.getTime() + days * 86400000);
-  
-    // Adjust returnDate to next Monday if it falls on Sat (6) or Sun (0)
+
     const dayOfWeek = returnDate.getDay();
-    if (dayOfWeek === 6) {
-      // Saturday → Monday
-      returnDate.setDate(returnDate.getDate() + 2);
-    } else if (dayOfWeek === 0) {
-      // Sunday → Monday
-      returnDate.setDate(returnDate.getDate() + 1);
-    }
-  
-    // Calculate grace period end date (4 days after return date)
+    if (dayOfWeek === 6) returnDate.setDate(returnDate.getDate() + 2);
+    else if (dayOfWeek === 0) returnDate.setDate(returnDate.getDate() + 1);
+
     const graceEndDate = new Date(returnDate.getTime() + 4 * 86400000);
-  
+
     try {
       await axios.post("http://localhost:5000/api/transactions", {
         userId,
@@ -48,13 +41,13 @@ const BookModal = ({ book, onClose, onIssued }) => {
         bookTitle: book.title,
         issueDate,
         returnDate,
-        graceEndDate, 
+        graceEndDate,
       });
-  
+
       await axios.put(`http://localhost:5000/api/books/issue/${book._id}`, {
         isAvailable: false,
       });
-  
+
       toast.success("Book Issued Successfully");
       onIssued(book._id);
     } catch (err) {
@@ -62,7 +55,6 @@ const BookModal = ({ book, onClose, onIssued }) => {
       console.error(err);
     }
   };
-  
 
   return (
     <AnimatePresence>
@@ -73,7 +65,7 @@ const BookModal = ({ book, onClose, onIssued }) => {
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="bg-white w-full max-w-xl p-6 rounded-xl shadow-2xl relative"
+          className="bg-white dark:bg-gray-900 w-full max-w-xl p-6 rounded-xl shadow-2xl relative transition-colors"
           initial={{ scale: 0.8, y: -50 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.8, y: -50 }}
@@ -82,7 +74,7 @@ const BookModal = ({ book, onClose, onIssued }) => {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-3 right-4 text-2xl font-bold text-gray-400 hover:text-black transition"
+            className="absolute top-3 right-4 text-2xl font-bold text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white transition"
           >
             &times;
           </button>
@@ -96,11 +88,11 @@ const BookModal = ({ book, onClose, onIssued }) => {
 
           {/* Book Info */}
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-indigo-700 mb-1">
+            <h2 className="text-2xl font-bold text-indigo-700 dark:text-indigo-300 mb-1">
               {book.title}
             </h2>
-            <p className="text-gray-600 text-sm mb-1">Author: {book.author}</p>
-            <p className="text-gray-500 text-sm">Category: {book.category}</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-1">Author: {book.author}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Category: {book.category}</p>
           </div>
 
           {/* Custom Days Input */}
@@ -111,7 +103,7 @@ const BookModal = ({ book, onClose, onIssued }) => {
             onChange={(e) => setCustomDays(e.target.value)}
             min={1}
             max={20}
-            className="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-indigo-500 focus:border-indigo-500 transition"
+            className="w-full p-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg mb-4 focus:ring-indigo-500 focus:border-indigo-500 transition"
           />
 
           {/* CTA Button */}

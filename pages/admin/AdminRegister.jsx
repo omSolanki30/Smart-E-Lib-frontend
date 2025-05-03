@@ -64,19 +64,19 @@ const AdminRegister = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-100 py-10 px-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-100 dark:from-gray-900 dark:to-gray-950 py-10 px-4 flex items-center justify-center transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="w-full max-w-xl"
       >
-        <Card className="shadow-xl border border-gray-200">
+        <Card className="shadow-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors">
           <CardHeader className="flex items-center gap-3">
             <UserPlus className="text-indigo-600 w-6 h-6" />
             <div>
-              <CardTitle className="text-2xl">Add New User</CardTitle>
-              <CardDescription>
+            <CardTitle className="text-2xl text-gray-800 dark:text-gray-100">Add New User</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">
                 Create a new student or admin account.
               </CardDescription>
             </div>
@@ -84,7 +84,7 @@ const AdminRegister = () => {
           <CardContent className="space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="id">User ID</Label>
+              <Label className="text-gray-800 dark:text-gray-300" htmlFor="id">User ID</Label>
                 <Input
                   name="id"
                   value={form.id}
@@ -94,7 +94,7 @@ const AdminRegister = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label className="text-gray-800 dark:text-gray-300" htmlFor="name">Full Name</Label>
                 <Input
                   name="name"
                   value={form.name}
@@ -103,7 +103,7 @@ const AdminRegister = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label className="text-gray-800 dark:text-gray-300" htmlFor="email">Email</Label>
                 <Input
                   type="email"
                   name="email"
@@ -136,14 +136,14 @@ const AdminRegister = () => {
               <div className="flex flex-col gap-4 pt-2">
                 <Button
                   type="submit"
-                  className="w-full bg-indigo-600 hover:bg-indigo-700"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-500 dark:hover:bg-indigo-600"
                 >
                   Create User
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full"
+                  className="w-full dark:border-gray-600 dark:text-gray-300"
                   onClick={() => navigate("/admin/users")}
                 >
                   Cancel

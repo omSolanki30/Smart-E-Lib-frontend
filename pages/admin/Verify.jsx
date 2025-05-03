@@ -34,14 +34,14 @@ function Verify() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50 dark:from-zinc-900 dark:to-zinc-800">
       <Navbar />
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <Card className="shadow-xl">
+        <Card className="shadow-xl dark:bg-zinc-900 dark:border-zinc-700">
           <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <FileSearch className="text-indigo-600" />
-              <CardTitle className="text-xl sm:text-2xl font-bold text-indigo-800">
+              <FileSearch className="text-indigo-600 dark:text-indigo-400" />
+              <CardTitle className="text-xl sm:text-2xl font-bold text-indigo-800 dark:text-indigo-200">
                 Verify User / Transaction
               </CardTitle>
             </div>
@@ -65,10 +65,10 @@ function Verify() {
             {/* Loading Skeletons */}
             {loading && (
               <div className="space-y-6">
-                <Skeleton className="h-6 w-1/3 bg-indigo-100" />
+                <Skeleton className="h-6 w-1/3 bg-indigo-100 dark:bg-zinc-700" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {Array.from({ length: 6 }).map((_, idx) => (
-                    <Skeleton key={idx} className="h-48 rounded-lg bg-indigo-100" />
+                    <Skeleton key={idx} className="h-48 rounded-lg bg-indigo-100 dark:bg-zinc-700" />
                   ))}
                 </div>
               </div>
@@ -78,21 +78,20 @@ function Verify() {
             {result && !loading && (
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <p><strong>Type:</strong> {result.type}</p>
-                  <p><strong>ID:</strong> {result.id}</p>
+                  <p className="dark:text-gray-300"><strong>Type:</strong> {result.type}</p>
+                  <p className="dark:text-gray-300"><strong>ID:</strong> {result.id}</p>
                 </div>
                 <Separator className="my-2" />
 
                 {/* Student Verification View */}
                 {result.type?.toLowerCase() === "student" && result.details && (
                   <div className="space-y-8">
-                    {/* Student Basic Info */}
-                    <Card className="border border-indigo-200 shadow-md">
+                    <Card className="border border-indigo-200 dark:border-zinc-700 shadow-md dark:bg-zinc-900">
                       <CardHeader className="flex items-center gap-2">
-                        <UserRound className="text-indigo-600" />
-                        <CardTitle className="text-lg">Student Details</CardTitle>
+                        <UserRound className="text-indigo-600 dark:text-indigo-400" />
+                        <CardTitle className="text-lg dark:text-indigo-200">Student Details</CardTitle>
                       </CardHeader>
-                      <CardContent className="text-sm space-y-2">
+                      <CardContent className="text-sm space-y-2 dark:text-gray-200">
                         <p><strong>ID:</strong> {result.details.id}</p>
                         <p><strong>Name:</strong> {result.details.name}</p>
                         <p><strong>Email:</strong> {result.details.email}</p>
@@ -105,19 +104,21 @@ function Verify() {
 
                     {/* Currently Issued Books */}
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-indigo-700">📚 Currently Issued Books</h3>
+                      <h3 className="text-lg font-semibold text-indigo-700 dark:text-indigo-300">
+                        📚 Currently Issued Books
+                      </h3>
                       {result.details.issueHistory?.filter(book => !book.returned).length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                           {result.details.issueHistory
                             ?.filter(book => !book.returned)
                             .map((entry, idx) => (
-                              <Card key={idx} className="border border-indigo-200 shadow-md">
+                              <Card key={idx} className="border border-indigo-200 dark:border-zinc-700 shadow-md dark:bg-zinc-900">
                                 <CardHeader>
-                                  <CardTitle className="text-base font-semibold text-indigo-800">
+                                  <CardTitle className="text-base font-semibold text-indigo-800 dark:text-indigo-200">
                                     {entry.bookTitle}
                                   </CardTitle>
                                 </CardHeader>
-                                <CardContent className="text-sm text-gray-700 space-y-1">
+                                <CardContent className="text-sm text-gray-700 dark:text-gray-200 space-y-1">
                                   <p><strong>Book Code:</strong> {entry.bookCode}</p>
                                   <p><strong>Author:</strong> {entry.author}</p>
                                   <p><strong>Category:</strong> {entry.category}</p>
@@ -133,7 +134,7 @@ function Verify() {
                             ))}
                         </div>
                       ) : (
-                        <p className="text-gray-600">🚫 No books currently issued.</p>
+                        <p className="text-gray-600 dark:text-gray-300">🚫 No books currently issued.</p>
                       )}
                     </div>
                   </div>
@@ -141,12 +142,12 @@ function Verify() {
 
                 {/* Transaction Verification View */}
                 {result.type?.toLowerCase() === "transaction" && result.details && (
-                  <Card className="border border-indigo-200 shadow-md">
+                  <Card className="border border-indigo-200 dark:border-zinc-700 shadow-md dark:bg-zinc-900">
                     <CardHeader className="flex items-center gap-2">
-                      <ClipboardCheck className="text-indigo-600" />
-                      <CardTitle className="text-lg">Transaction Details</CardTitle>
+                      <ClipboardCheck className="text-indigo-600 dark:text-indigo-400" />
+                      <CardTitle className="text-lg dark:text-indigo-200">Transaction Details</CardTitle>
                     </CardHeader>
-                    <CardContent className="text-sm space-y-2 text-gray-700">
+                    <CardContent className="text-sm space-y-2 text-gray-700 dark:text-gray-200">
                       <p><strong>Transaction ID:</strong> {result.details.transactionId}</p>
                       <p><strong>Student ID:</strong> {result.details.studentId}</p>
                       <p><strong>Book Code:</strong> {result.details.bookCode}</p>

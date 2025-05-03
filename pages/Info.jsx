@@ -73,7 +73,6 @@ const Info = () => {
     );
     setShowForm(incomplete);
   }, []);
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,12 +114,14 @@ const Info = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="hover:shadow-md transition-all">
+      <Card className="hover:shadow-md transition-all dark:bg-gray-900 dark:border-gray-700">
         <CardHeader className="flex gap-4 items-center">
-          <div className="text-indigo-600">{icon}</div>
+          <div className="text-indigo-600 dark:text-indigo-400">{icon}</div>
           <div>
-            <CardTitle className="text-sm text-gray-600">{label}</CardTitle>
-            <CardDescription className="text-base text-black font-medium">
+            <CardTitle className="text-sm text-gray-600 dark:text-gray-300">
+              {label}
+            </CardTitle>
+            <CardDescription className="text-base text-black dark:text-white font-medium">
               {value || "N/A"}
             </CardDescription>
           </div>
@@ -130,7 +131,7 @@ const Info = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <Navbar />
       <div className="max-w-5xl mx-auto px-4 py-10">
         <motion.div
@@ -174,42 +175,39 @@ const Info = () => {
           />
         </div>
 
-        {!showForm &&
-          otherDetails.fullName &&
-          otherDetails.contactNumber &&
-          otherDetails.address && (
-            <div className="bg-white p-6 rounded-xl shadow border border-gray-200">
-              <h3 className="text-lg font-semibold mb-4 text-indigo-600">
-                📘 Additional Information
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <InfoCard
-                  icon={<User size={20} />}
-                  label="Full Name"
-                  value={otherDetails.fullName}
-                />
-                <InfoCard
-                  icon={<Phone size={20} />}
-                  label="Contact Number"
-                  value={otherDetails.contactNumber}
-                />
-                <InfoCard
-                  icon={<Home size={20} />}
-                  label="Address"
-                  value={otherDetails.address}
-                />
-              </div>
+        {!showForm && otherDetails.fullName && (
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold mb-4 text-indigo-600 dark:text-indigo-400">
+              📘 Additional Information
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <InfoCard
+                icon={<User size={20} />}
+                label="Full Name"
+                value={otherDetails.fullName}
+              />
+              <InfoCard
+                icon={<Phone size={20} />}
+                label="Contact Number"
+                value={otherDetails.contactNumber}
+              />
+              <InfoCard
+                icon={<Home size={20} />}
+                label="Address"
+                value={otherDetails.address}
+              />
             </div>
-          )}
+          </div>
+        )}
 
         {showForm && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mt-10 bg-white border p-6 rounded-xl shadow-md"
+            className="mt-10 bg-white dark:bg-gray-900 border p-6 rounded-xl shadow-md dark:border-gray-700"
           >
-            <h3 className="text-lg font-semibold mb-4 text-indigo-600">
+            <h3 className="text-lg font-semibold mb-4 text-indigo-600 dark:text-indigo-400">
               Complete Your Details
             </h3>
             <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-4">

@@ -87,17 +87,17 @@ const Library = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <Navbar />
 
       <div className="max-w-7xl mx-auto p-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-indigo-800 flex items-center gap-2">
-              <BookOpen className="text-indigo-500" /> Explore Our Library
+            <h1 className="text-3xl font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-2">
+              <BookOpen className="text-indigo-500 dark:text-indigo-300" /> Explore Our Library
             </h1>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
               We have over <strong>{books.length}</strong> books in our collection.
             </p>
           </div>
@@ -108,9 +108,9 @@ const Library = () => {
                 <Menu size={18} /> Categories
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="max-w-[260px]">
+            <SheetContent side="left" className="max-w-[260px] dark:bg-gray-900">
               <SheetHeader>
-                <SheetTitle className="mb-4">📚 Categories</SheetTitle>
+                <SheetTitle className="mb-4 text-gray-800 dark:text-gray-100">📚 Categories</SheetTitle>
                 <div className="space-y-2 overflow-y-auto max-h-[70vh] pr-2">
                   {categories.map((category, index) => (
                     <Button
@@ -137,6 +137,7 @@ const Library = () => {
             placeholder="🔍 Search books by title, author, or category..."
             value={searchQuery}
             onChange={handleSearch}
+            className="dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
           />
         </div>
 
@@ -155,7 +156,7 @@ const Library = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 onClick={() => book.isAvailable && setSelectedBook(book)}
-                className={`cursor-pointer bg-white rounded-xl shadow-sm border border-gray-200 p-4 transition duration-300 relative hover:shadow-md ${
+                className={`cursor-pointer bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 transition duration-300 relative hover:shadow-md ${
                   book.isAvailable
                     ? "hover:scale-[1.02]"
                     : "opacity-60 cursor-not-allowed"
@@ -166,24 +167,24 @@ const Library = () => {
                   alt={book.title}
                   className="h-40 w-full object-cover rounded mb-3"
                 />
-                <h3 className="text-lg font-semibold mb-1 text-gray-800">
+                <h3 className="text-lg font-semibold mb-1 text-gray-800 dark:text-white">
                   {book.title}
                 </h3>
-                <p className="text-sm text-gray-600">{book.author}</p>
-                <p className="text-sm text-gray-500 mb-2">{book.category}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{book.author}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{book.category}</p>
 
                 <span
                   className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border ${
                     book.isAvailable
-                      ? "bg-green-100 text-green-700 border-green-300"
-                      : "bg-red-100 text-red-700 border-red-300"
+                      ? "bg-green-100 text-green-700 border-green-300 dark:bg-green-800 dark:text-green-100 dark:border-green-700"
+                      : "bg-red-100 text-red-700 border-red-300 dark:bg-red-800 dark:text-red-100 dark:border-red-700"
                   }`}
                 >
-                  {book.isAvailable ? "✅ Available" : "❌ Not Available"}
+                  {book.isAvailable ? "Available" : "Not Available"}
                 </span>
 
                 {book.isAvailable && (
-                  <p className="text-xs mt-1 text-blue-500">Click to issue</p>
+                  <p className="text-xs mt-1 text-blue-500 dark:text-blue-400">Click to issue</p>
                 )}
               </motion.div>
             ))}
@@ -192,7 +193,7 @@ const Library = () => {
 
         {/* Pagination Controls */}
         {filteredBooks.length > ITEMS_PER_PAGE && (
-          <div className="mt-10 flex justify-center items-center gap-6 text-indigo-800 font-medium">
+          <div className="mt-10 flex justify-center items-center gap-6 text-indigo-800 dark:text-indigo-300 font-medium">
             <Button
               variant="outline"
               size="sm"

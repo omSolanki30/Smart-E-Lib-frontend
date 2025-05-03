@@ -43,7 +43,7 @@ const BulkUpload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50 dark:from-gray-900 dark:to-gray-800 p-6">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -51,13 +51,13 @@ const BulkUpload = () => {
         className="max-w-4xl mx-auto grid gap-10 md:grid-cols-2"
       >
         {/* Book Upload */}
-        <Card className="shadow-lg">
+        <Card className="shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
           <CardHeader>
             <div className="flex items-center gap-3 mb-3">
-              <BookOpen className="text-indigo-600" size={28} />
+              <BookOpen className="text-indigo-600 dark:text-indigo-400" size={28} />
               <div>
                 <CardTitle className="text-lg font-bold">Books Bulk Upload</CardTitle>
-                <CardDescription className="text-sm text-gray-500">
+                <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
                   Upload a CSV or JSON file to register multiple books.
                 </CardDescription>
               </div>
@@ -68,12 +68,17 @@ const BulkUpload = () => {
               type="file"
               accept=".csv,.json"
               onChange={(e) => setBookFile(e.target.files[0])}
+              className="file:bg-indigo-600 file:text-white dark:file:bg-indigo-500 dark:file:text-white"
             />
-            <Button onClick={() => handleUpload("books")} disabled={!bookFile}>
+            <Button
+              onClick={() => handleUpload("books")}
+              disabled={!bookFile}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-500 dark:hover:bg-indigo-600"
+            >
               <UploadCloud className="mr-2 h-4 w-4" /> Upload Books File
             </Button>
             {bookUploaded && (
-              <div className="flex items-center gap-2 mt-2 text-green-600">
+              <div className="flex items-center gap-2 mt-2 text-green-600 dark:text-green-400">
                 <FileCheck size={20} /> Books uploaded and saved successfully!
               </div>
             )}
@@ -81,13 +86,13 @@ const BulkUpload = () => {
         </Card>
 
         {/* User Upload */}
-        <Card className="shadow-lg">
+        <Card className="shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
           <CardHeader>
             <div className="flex items-center gap-3 mb-3">
-              <Users className="text-indigo-600" size={28} />
+              <Users className="text-indigo-600 dark:text-indigo-400" size={28} />
               <div>
                 <CardTitle className="text-lg font-bold">Users Bulk Upload</CardTitle>
-                <CardDescription className="text-sm text-gray-500">
+                <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
                   Upload a CSV or JSON file to register multiple users.
                 </CardDescription>
               </div>
@@ -98,12 +103,17 @@ const BulkUpload = () => {
               type="file"
               accept=".csv,.json"
               onChange={(e) => setUserFile(e.target.files[0])}
+              className="file:bg-indigo-600 file:text-white dark:file:bg-indigo-500 dark:file:text-white"
             />
-            <Button onClick={() => handleUpload("users")} disabled={!userFile}>
+            <Button
+              onClick={() => handleUpload("users")}
+              disabled={!userFile}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-500 dark:hover:bg-indigo-600"
+            >
               <UploadCloud className="mr-2 h-4 w-4" /> Upload Users File
             </Button>
             {userUploaded && (
-              <div className="flex items-center gap-2 mt-2 text-green-600">
+              <div className="flex items-center gap-2 mt-2 text-green-600 dark:text-green-400">
                 <FileCheck size={20} /> Users uploaded and saved successfully!
               </div>
             )}

@@ -95,7 +95,7 @@ const EditBookForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50 py-10 px-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-white to-indigo-50 dark:from-gray-900 dark:to-gray-800 py-10 px-4 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ const EditBookForm = () => {
       >
         <Card className="shadow-xl border">
           <CardHeader className="flex items-center gap-3">
-            <PencilLine className="text-indigo-600 w-6 h-6" />
+          <PencilLine className="text-indigo-600 dark:text-indigo-300 w-6 h-6" />
             <div>
               <CardTitle className="text-2xl">Edit Book</CardTitle>
               <CardDescription>Update book details below.</CardDescription>
@@ -132,7 +132,7 @@ const EditBookForm = () => {
 
               {/* Extra Fields Section */}
               <div className="pt-4 border-t">
-                <Label className="mb-2 block text-lg text-indigo-600">
+                <Label className="mb-2 block text-lg text-indigo-600 dark:text-indigo-300"> 
                   Additional Fields
                 </Label>
                 {extraFields.map((field, index) => (

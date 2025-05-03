@@ -57,13 +57,13 @@ export default function AddBookForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-br from-white to-indigo-50 p-6"
+      className="min-h-screen bg-gradient-to-br from-white to-indigo-50 dark:from-gray-900 dark:to-gray-800 p-6"
     >
       <div className="max-w-3xl mx-auto">
-        <Card className="shadow-xl">
+      <Card className="shadow-xl bg-white dark:bg-gray-900">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <BookPlus className="text-indigo-600" size={28} />
+            <BookPlus className="text-indigo-600 dark:text-indigo-300" size={28} />
               <div>
                 <CardTitle className="text-2xl font-bold">
                   Add New Book
@@ -112,7 +112,7 @@ export default function AddBookForm() {
 
               <div className="border-t pt-4">
                 <h3 className="text-lg font-semibold flex items-center gap-2 text-indigo-600">
-                  <FileText className="w-5 h-5" /> Additional Fields
+                  <FileText className="w-5 h-5 text-indigo-600 dark:text-indigo-300" /> Additional Fields
                 </h3>
                 <div className="flex flex-col sm:flex-row gap-2 mt-2">
                   <Input
@@ -139,7 +139,7 @@ export default function AddBookForm() {
                 {extraFields.length > 0 && (
                   <div className="mt-4 space-y-1">
                     {extraFields.map(({ key, value }, i) => (
-                      <div key={i} className="text-sm text-gray-600">
+                      <div key={i} className="text-sm text-gray-600 dark:text-gray-300">
                         <strong>{key}</strong>: {value}
                       </div>
                     ))}

@@ -9,9 +9,14 @@ import {
   BookMarked,
   AlarmClock,
   LineChart,
-  BadgeCheck
+  BadgeCheck,
 } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -65,19 +70,21 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <Navbar isAdmin />
       <div className="p-6 max-w-7xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-indigo-800 mb-10"
+          className="text-3xl sm:text-4xl font-bold text-indigo-800 dark:text-indigo-300 mb-10"
         >
           📊 Admin Dashboard
         </motion.h1>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">🛠️ Management</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          🛠️ Management
+        </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
           {managementCards.map((card, index) => (
             <motion.div
@@ -87,7 +94,7 @@ const AdminDashboard = () => {
               onClick={() => navigate(card.link)}
               className="cursor-pointer"
             >
-              <Card className="hover:shadow-lg transition border border-blue-100">
+              <Card className="hover:shadow-lg transition border border-blue-100 dark:border-blue-800 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
                 <CardHeader className="flex flex-row gap-4 items-center">
                   {card.icon}
                   <div>
@@ -100,7 +107,9 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">📈 Reports & Insights</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          📈 Reports & Insights
+        </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reportsCards.map((card, index) => (
             <motion.div
@@ -110,7 +119,7 @@ const AdminDashboard = () => {
               onClick={() => navigate(card.link)}
               className="cursor-pointer"
             >
-              <Card className="hover:shadow-lg transition border border-indigo-100">
+              <Card className="hover:shadow-lg transition border border-indigo-100 dark:border-indigo-800 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
                 <CardHeader className="flex flex-row gap-4 items-center">
                   {card.icon}
                   <div>

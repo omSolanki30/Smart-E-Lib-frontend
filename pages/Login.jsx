@@ -26,20 +26,17 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
 
-      // alert("✅ Login Successful");
-      toast.success("✅ Login Successful");
+      toast.success("Login Successful");
 
       navigate(
         user.role === "admin" ? "/admin-dashboard" : "/student-dashboard"
       );
     } catch (err) {
-      console.error("❌ Invalid email or password:", err);
-      // alert("Invalid email or password");
-      toast.error("❌ Invalid email or password");
+      console.error("❌Invalid email or password:", err);
+      toast.error("Invalid email or password");
     }
   };
 
-  // ✅ Redirect if user is already logged in
   useEffect(() => {
     if (user) {
       navigate(
@@ -49,33 +46,33 @@ const Login = () => {
   }, [user, navigate]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md"
+        className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md border dark:border-gray-700"
       >
-        <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
+        <h2 className="text-2xl font-bold text-center mb-6 text-blue-600 dark:text-blue-400">
           Login
         </h2>
         <div className="text-left">
-        <Input
-          label="Email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-        />
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+          />
         </div>
         <div className="mb-5">
-        <PasswordInput
-          label="Password"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
-        />
+          <PasswordInput
+            label="Password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+          />
         </div>
         <Button>Login</Button>
-        <p className="mt-4 text-sm text-center text-gray-600">
+        <p className="mt-4 text-sm text-center text-gray-600 dark:text-gray-300">
           Don't have an account?{" "}
           <a href="/register" className="text-blue-500 hover:underline">
             Register

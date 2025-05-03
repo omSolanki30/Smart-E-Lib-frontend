@@ -73,11 +73,11 @@ const UserManagement = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <Navbar isAdmin />
       <div className="p-6 max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <h1 className="text-3xl font-bold text-indigo-700">👥 User Management</h1>
+        <h1 className="text-3xl font-bold text-indigo-700 dark:text-indigo-300">👥 User Management</h1>
           <Button onClick={() => navigate("/admin/register")}>
             <PlusCircle className="mr-2 h-4 w-4" />
             Add New User
@@ -94,19 +94,19 @@ const UserManagement = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="shadow-sm hover:shadow-md transition-all">
+                <Card className="shadow-sm hover:shadow-md transition-all bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
                   <CardHeader>
-                    <CardTitle className="text-lg text-gray-800">{user.name}</CardTitle>
-                    <CardDescription className="text-sm text-gray-500">{user.email}</CardDescription>
+                  <CardTitle className="text-lg text-gray-800 dark:text-gray-100">{user.name}</CardTitle>
+                  <CardDescription className="text-sm text-gray-500 dark:text-gray-400">{user.email}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2">
-                    <p className="text-sm">
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
                       <strong>ID:</strong> {user.id}
                     </p>
-                    <p className="text-sm">
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
                       <strong>Password:</strong> {user.rawPassword || "N/A"}
                     </p>
-                    <p className="text-sm">
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
                       <strong>Role:</strong>{" "}
                       <Badge
                         variant={user.role === "admin" ? "default" : "secondary"}
@@ -151,7 +151,7 @@ const UserManagement = () => {
             >
              <ChevronLeft />
             </Button>
-            <span className="text-gray-700 font-medium text-sm mt-2">
+            <span className="text-gray-700 dark:text-gray-300 font-medium text-sm mt-2">
               Page {currentPage} of {totalPages}
             </span>
             <Button
@@ -178,7 +178,7 @@ const UserManagement = () => {
                 : "Promote this user to admin?"}
             </DialogTitle>
           </DialogHeader>
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600 dark:text-gray-300">
             {modal.user?.name} ({modal.user?.email})
           </div>
           <DialogFooter className="mt-4">

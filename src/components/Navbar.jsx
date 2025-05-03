@@ -17,11 +17,14 @@ import {
   LogOut,
   LayoutDashboard,
 } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
+import { Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [openMobile, setOpenMobile] = useState(false);
+  const { isDark, setIsDark } = useTheme();
 
   const isAdmin = user?.role === "admin";
 
@@ -52,11 +55,11 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900 dark:text-white backdrop-blur border-b dark:border-gray-700 border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <Link
           to="/"
-          className="text-2xl font-bold text-indigo-700 tracking-tight flex items-center gap-1"
+          className="text-2xl font-bold text-indigo-700 dark:text-indigo-300 tracking-tight flex items-center gap-1"
         >
           Smart<span className="text-indigo-900">Library</span>
         </Link>
@@ -69,7 +72,7 @@ const Navbar = () => {
                 <NavigationMenuItem key={i}>
                   <Link
                     to={link.path}
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-indigo-700 transition"
+                    className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-700 dark:hover:text-indigo-400 transition"
                   >
                     {link.icon}
                     {link.name}
@@ -86,6 +89,16 @@ const Navbar = () => {
             <LogOut size={16} />
             Logout
           </Button>
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className="p-2 rounded hover:bg-muted"
+          >
+            {isDark ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -103,12 +116,12 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {openMobile && (
-        <div className="md:hidden bg-white border-t px-6 py-4 space-y-4">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-700 px-6 py-4 space-y-4">
           {links.map((link, i) => (
             <Link
               key={i}
               to={link.path}
-              className="flex items-center gap-2 text-gray-700 hover:text-indigo-700 font-medium"
+              className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-indigo-700 dark:hover:text-indigo-400 font-medium"
               onClick={() => setOpenMobile(false)}
             >
               {link.icon}

@@ -78,11 +78,11 @@ const BookManagement = () => {
   }, [fetchBooks]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navbar isAdmin />
       <div className="p-6 max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-          <h1 className="text-3xl font-bold text-indigo-800 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-2">
             <BookOpen /> Book Management
           </h1>
 
@@ -94,7 +94,7 @@ const BookManagement = () => {
             <Button
               onClick={handleBookSync}
               variant="outline"
-              className="text-indigo-700 border-indigo-300 hover:bg-indigo-50"
+              className="text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-800"
             >
               Sync Books
             </Button>
@@ -116,7 +116,7 @@ const BookManagement = () => {
                   <CardHeader>
                     <CardTitle>{book.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-sm text-gray-700 space-y-1">
+                  <CardContent className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                     <p>
                       <strong>Author:</strong> {book.author}
                     </p>
@@ -166,7 +166,7 @@ const BookManagement = () => {
             >
               <ChevronLeft />
             </Button>
-            <p className="text-gray-600 font-medium">
+            <p className="text-gray-600 dark:text-gray-400 font-medium">
               Page {currentPage} of {totalPages}
             </p>
             <Button
@@ -192,7 +192,7 @@ const BookManagement = () => {
             <DialogTitle>
               Are you sure you want to delete this book?
             </DialogTitle>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               {modal.book?.title} by {modal.book?.author}
             </p>
           </DialogHeader>

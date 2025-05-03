@@ -74,7 +74,7 @@ const EditInfo = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <Navbar />
       <div className="max-w-3xl mx-auto p-6">
         <motion.div
@@ -82,28 +82,28 @@ const EditInfo = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <Card className="shadow-xl">
+          <Card className="shadow-xl dark:bg-gray-900 dark:border-gray-700">
             <CardHeader className="mb-4">
-              <CardTitle className="text-2xl font-bold text-indigo-700 flex items-center gap-2">
+              <CardTitle className="text-2xl font-bold text-indigo-700 dark:text-indigo-400 flex items-center gap-2">
                 <User className="w-6 h-6" /> Edit Your Info
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <IdCard size={16} /> Student ID
                   </label>
                   <Input
                     name="id"
                     value={formData.id}
                     disabled
-                    className="bg-gray-100 cursor-not-allowed"
+                    className="bg-gray-100 dark:bg-gray-800 cursor-not-allowed"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <User size={16} /> Name
                   </label>
                   <Input
@@ -115,7 +115,7 @@ const EditInfo = () => {
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <Mail size={16} /> Email
                   </label>
                   <Input
@@ -128,7 +128,7 @@ const EditInfo = () => {
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <User size={16} /> Full Name
                   </label>
                   <Input
@@ -139,7 +139,7 @@ const EditInfo = () => {
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <Phone size={16} /> Contact Number
                   </label>
                   <Input
@@ -150,7 +150,7 @@ const EditInfo = () => {
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-600 flex items-center gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
                     <Home size={16} /> Address
                   </label>
                   <Textarea

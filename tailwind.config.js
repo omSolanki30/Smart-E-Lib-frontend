@@ -1,15 +1,17 @@
-export const content = [
-  "./index.html",
-  "./src/**/*.{js,jsx}", // Add JSX file extensions for TailwindCSS to scan
+export default {
+  darkMode: 'class',
+  content: [
+    "./index.html",
+  "./src/**/*.{js,jsx}",
   "./components/**/*.{js,ts,jsx,tsx}",
   "./pages/**/*.{js,ts,jsx,tsx}",
   "./layouts/**/*.{js,ts,jsx,tsx}",
-];
-export const theme = {
-  extend: {
-    fontFamily: {
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {fontFamily: {
       inter: ["Inter", "sans-serif"],
-    },
+    },},
   },
+  plugins: [],
 };
-export const plugins = [];
