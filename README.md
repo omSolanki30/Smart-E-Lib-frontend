@@ -89,7 +89,7 @@ Visit: `http://localhost:5173`
 ## 🔗 Backend Link
 
 If you're looking for the backend repo:
-[Smart E-Library Backend Repository](https://github.com/your-username/smart-e-library-backend)
+[Smart E-Library Backend Repository](https://github.com/omSolanki30/Smart-E-Lib-backend)
 
 ---
 
