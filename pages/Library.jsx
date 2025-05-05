@@ -29,7 +29,7 @@ const Library = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/books");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/books`);
         setBooks(res.data);
         setFilteredBooks(res.data);
 

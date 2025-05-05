@@ -53,7 +53,7 @@ const IssuedBookCard = ({ book, transactionId, onReturn }) => {
   const returnBook = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/transactions/return/${transactionId}`
+        `${import.meta.env.VITE_API_URL}api/transactions/return/${transactionId}`
       );
       toast.success("Book returned successfully");
       if (onReturn) onReturn(transactionId);

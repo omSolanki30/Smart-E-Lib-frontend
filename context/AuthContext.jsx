@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
           const parsedUser = JSON.parse(rawUser);
 
           // Fetch latest data from backend
-          const res = await axios.get(`http://localhost:5000/api/users/${parsedUser._id}`);
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}api/users/${parsedUser._id}`);
           const freshUser = res.data;
 
           setUser(freshUser);

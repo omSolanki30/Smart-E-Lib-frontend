@@ -11,13 +11,13 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    role: "student", // fixed
+    role: "student", 
   });
 
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  // Redirect admin if somehow accessed
+ 
   useEffect(() => {
     if (user?.role === "admin") {
       navigate("/admin-dashboard");

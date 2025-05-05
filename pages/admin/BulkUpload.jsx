@@ -1,4 +1,3 @@
-// BulkUpload.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { UploadCloud, FileCheck, Users, BookOpen } from "lucide-react";
@@ -29,15 +28,15 @@ const BulkUpload = () => {
     try {
       const endpoint =
         type === "books"
-          ? "http://localhost:5000/api/books/bulk-upload"
-          : "http://localhost:5000/api/users/bulk-upload";
+          ? `${import.meta.env.VITE_API_URL}api/books/bulk-upload`
+          : `${import.meta.env.VITE_API_URL}api/users/bulk-upload`;
 
       await axios.post(endpoint, formData);
-      toast.success(`✅ ${type === "books" ? "Books" : "Users"} uploaded successfully`);
+      toast.success(`${type === "books" ? "Books" : "Users"} uploaded successfully`);
       if (type === "books") setBookUploaded(true);
       else setUserUploaded(true);
     } catch (err) {
-      toast.error(`❌ Failed to upload ${type}`);
+      toast.error(`Failed to upload ${type}`);
       console.error(err);
     }
   };

@@ -23,7 +23,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000", // Replace with your backend port
+        target: "http://localhost:5000",
+        // target: "https://smart-e-lib-backend.onrender.com",
         changeOrigin: true,
         secure: false,
       },

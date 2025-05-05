@@ -32,7 +32,7 @@ const UserManagement = () => {
 
   const fetchUsers = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/users", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/admin/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -45,12 +45,12 @@ const UserManagement = () => {
     const { action, user } = modal;
     try {
       if (action === "delete") {
-        await axios.delete(`http://localhost:5000/api/admin/users/${user._id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL}api/admin/users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else if (action === "promote") {
         await axios.put(
-          `http://localhost:5000/api/admin/users/promote/${user._id}`,
+          `${import.meta.env.VITE_API_URL}api/admin/users/promote/${user._id}`,
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );

@@ -26,7 +26,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/users/${user._id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/users/${user._id}`);
         const data = res.data;
 
         setUserStats({

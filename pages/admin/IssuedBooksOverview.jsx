@@ -22,7 +22,7 @@ const IssuedBooksOverview = () => {
   useEffect(() => {
     const fetchStats = async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/reports/issued-stats"
+        `${import.meta.env.VITE_API_URL}api/reports/issued-stats`
       );
       setData(res.data);
     };

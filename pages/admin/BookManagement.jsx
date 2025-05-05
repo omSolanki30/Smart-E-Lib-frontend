@@ -34,7 +34,7 @@ const BookManagement = () => {
 
   const fetchBooks = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/books");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/books`);
       setBooks(res.data);
     } catch (err) {
       console.error("Failed to fetch books:", err);
@@ -42,7 +42,7 @@ const BookManagement = () => {
   }, []);
 
   const deleteBook = async (id) => {
-    await axios.delete(`http://localhost:5000/api/books/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}api/books/${id}`);
     fetchBooks();
   };
 
@@ -57,7 +57,7 @@ const BookManagement = () => {
 
   const handleBookSync = async () => {
     try {
-      const res = await axios.put("http://localhost:5000/api/users/book-sync");
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}api/users/book-sync`);
       toast.success(res.data.message || "Book sync completed");
 
       fetchBooks();

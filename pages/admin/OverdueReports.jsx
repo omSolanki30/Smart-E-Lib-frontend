@@ -39,7 +39,7 @@ const OverdueReports = () => {
     try {
       const token = localStorage.getItem("token");
   
-      const res = await axios.put("/api/users/calculate-overdues", {}, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}api/users/calculate-overdues`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
   

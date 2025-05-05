@@ -33,7 +33,7 @@ const EditBookForm = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/books/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/books/${id}`);
         setForm(res.data);
 
         const coreKeys = [
@@ -78,7 +78,7 @@ const EditBookForm = () => {
     });
 
     try {
-      await axios.put(`http://localhost:5000/api/books/${id}`, data);
+      await axios.put(`${import.meta.env.VITE_API_URL}api/books/${id}`, data);
       toast.success("Book updated successfully");
       navigate("/admin/books");
     } catch (err) {

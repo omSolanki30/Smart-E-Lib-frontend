@@ -54,7 +54,7 @@ const Info = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/users/${user._id}`
+          `${import.meta.env.VITE_API_URL}api/users/${user._id}`
         );
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
@@ -81,12 +81,12 @@ const Info = () => {
       !otherDetails.contactNumber ||
       !otherDetails.address
     ) {
-      toast.error("❌ Please fill all fields before saving.");
+      toast.error("Please fill all fields before saving.");
       return;
     }
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/users/update-details/${user._id}`,
+        `${import.meta.env.VITE_API_URL}api/users/update-details/${user._id}`,
         {
           name: user.name,
           email: user.email,
@@ -99,9 +99,9 @@ const Info = () => {
 
       // Update local states
       setUser(updatedUser);
-      setOtherDetails(updatedUser.otherDetails); // 👈 this is important
+      setOtherDetails(updatedUser.otherDetails); 
       localStorage.setItem("user", JSON.stringify(updatedUser));
-      setShowForm(false); // hide form now
+      setShowForm(false); 
     } catch (err) {
       console.error(err);
       toast.error("Failed to update details");

@@ -61,7 +61,7 @@ const EditInfo = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/users/update-details/${user._id}`,
+        `${import.meta.env.VITE_API_URL}api/users/update-details/${user._id}`,
         formData
       );
       setUser(res.data.updatedUser);

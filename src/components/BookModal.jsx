@@ -32,8 +32,9 @@ const BookModal = ({ book, onClose, onIssued }) => {
 
     const graceEndDate = new Date(returnDate.getTime() + 4 * 86400000);
 
+    //http://localhost:5000/api/transactions
     try {
-      await axios.post("http://localhost:5000/api/transactions", {
+      await axios.post(`${import.meta.env.VITE_API_URL}api/transactions`, {
         userId,
         studentID: studentId,
         bookId: book._id,
@@ -44,7 +45,8 @@ const BookModal = ({ book, onClose, onIssued }) => {
         graceEndDate,
       });
 
-      await axios.put(`http://localhost:5000/api/books/issue/${book._id}`, {
+      //http://localhost:5000/api/books/issue/${book._id}
+      await axios.put(`${import.meta.env.VITE_API_URL}api/books/issue/${book._id}`, {
         isAvailable: false,
       });
 

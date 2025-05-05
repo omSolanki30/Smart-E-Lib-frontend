@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Backend URL for fetching books
-const API_URL = 'http://localhost:5000/api/books';
+const API_URL = `${import.meta.env.VITE_API_URL}api/books`;
 
 export const fetchBooks = async () => {
   try {
