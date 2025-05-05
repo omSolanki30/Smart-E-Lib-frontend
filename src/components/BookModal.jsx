@@ -31,8 +31,7 @@ const BookModal = ({ book, onClose, onIssued }) => {
     else if (dayOfWeek === 0) returnDate.setDate(returnDate.getDate() + 1);
 
     const graceEndDate = new Date(returnDate.getTime() + 4 * 86400000);
-
-    //http://localhost:5000/api/transactions
+    
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}api/transactions`, {
         userId,
@@ -45,7 +44,6 @@ const BookModal = ({ book, onClose, onIssued }) => {
         graceEndDate,
       });
 
-      //http://localhost:5000/api/books/issue/${book._id}
       await axios.put(`${import.meta.env.VITE_API_URL}api/books/issue/${book._id}`, {
         isAvailable: false,
       });

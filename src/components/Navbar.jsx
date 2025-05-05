@@ -139,6 +139,16 @@ const Navbar = () => {
             <LogOut size={16} />
             Logout
           </Button>
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className="p-2 rounded hover:bg-muted"
+          >
+            {isDark ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
+          </button>
         </div>
       )}
     </header>

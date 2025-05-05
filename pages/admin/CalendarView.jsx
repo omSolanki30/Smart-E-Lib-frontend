@@ -32,7 +32,7 @@ const CalendarView = () => {
     const fetchEvents = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/reports/issue-history", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/reports/issue-history`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEvents(res.data);

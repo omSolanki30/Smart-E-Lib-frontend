@@ -23,7 +23,7 @@ const OverdueReports = () => {
     const fetchOverdues = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/reports/overdue", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/reports/overdue`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOverdueData(res.data.overdueDetails);
@@ -45,7 +45,7 @@ const OverdueReports = () => {
   
       toast.success(res.data.message || "Overdues recalculated");
   
-      const updated = await axios.get("/api/reports/overdue", {
+      const updated = await axios.get(`${import.meta.env.VITE_API_URL}api/reports/overdue`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   

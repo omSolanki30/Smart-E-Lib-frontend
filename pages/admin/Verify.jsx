@@ -23,7 +23,7 @@ function Verify() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await axios.get(`/api/transactions/verify?query=${query}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/transactions/verify?query=${query}`);
       setResult(res.data);
       console.log(res.data);
     } catch (err) {

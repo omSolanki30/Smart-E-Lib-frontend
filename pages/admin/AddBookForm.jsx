@@ -43,7 +43,7 @@ export default function AddBookForm() {
     });
 
     try {
-      const res = await axios.post("/api/books", finalData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/books`, finalData);
       toast.success("Book created successfully!");
       navigate("/admin/books");
     } catch (error) {
