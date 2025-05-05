@@ -16,14 +16,14 @@ export const AuthProvider = ({ children }) => {
         if (rawUser && rawUser !== 'undefined' && storedToken) {
           const parsedUser = JSON.parse(rawUser);
 
-          // ✅ Fetch latest data from backend
+          // Fetch latest data from backend
           const res = await axios.get(`http://localhost:5000/api/users/${parsedUser._id}`);
           const freshUser = res.data;
 
           setUser(freshUser);
           setToken(storedToken);
 
-          // ✅ Update localStorage with fresh data
+          // Update localStorage with fresh data
           localStorage.setItem('user', JSON.stringify(freshUser));
         } else {
           // Invalid or missing user/token
