@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             duration: 3000,
             style: {
               borderRadius: "10px",
-              background: "#fff",
-              color: "#333",
+              background: "var(--toast-bg)",
+              color: "var(--toast-color)",
               fontSize: "0.9rem",
             },
             success: {
