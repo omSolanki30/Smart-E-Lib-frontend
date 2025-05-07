@@ -39,6 +39,11 @@ const Navbar = () => {
       path: "/admin/bulk-upload",
       icon: <UploadCloud size={18} />,
     },
+    {
+      name: "Admin Info",
+      path: "/admin/info",
+      icon: <UsersRound size={18} />,
+    },
   ];
 
   const studentLinks = [

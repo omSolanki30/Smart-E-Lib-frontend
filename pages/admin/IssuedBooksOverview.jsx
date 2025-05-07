@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
+  Legend,
 } from "recharts";
 import Navbar from "../../src/components/Navbar";
 
@@ -21,10 +22,15 @@ const IssuedBooksOverview = () => {
 
   useEffect(() => {
     const fetchStats = async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}api/reports/issued-stats`
-      );
-      setData(res.data);
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}api/reports/issued-stats`
+        );
+        setData(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.error("Error fetching issued stats:", err);
+      }
     };
     fetchStats();
   }, []);
@@ -37,9 +43,10 @@ const IssuedBooksOverview = () => {
           📊 Issued Books Overview
         </h1>
 
+        {/* Universal Totals */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 shadow border border-gray-200 dark:border-zinc-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total Issued</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Total Issued (All Time)</p>
             <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400">
               {data.totalIssued}
             </h2>
@@ -58,11 +65,12 @@ const IssuedBooksOverview = () => {
           </div>
         </div>
 
+        {/* Monthly Breakdown Chart */}
         <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 shadow border border-gray-200 dark:border-zinc-700">
           <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">
-            📅 Monthly Issued Trend
+            📅 Monthly Issued Breakdown
           </h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={320}>
             <BarChart data={data.monthlyData}>
               <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.1} />
               <XAxis dataKey="month" stroke="#ccc" />
@@ -76,7 +84,10 @@ const IssuedBooksOverview = () => {
                 wrapperStyle={{ fontSize: "0.875rem" }}
                 labelStyle={{ color: "#f3f4f6" }}
               />
-              <Bar dataKey="count" fill="#6366F1" />
+              <Legend />
+              <Bar dataKey="issued" fill="#6366F1" name="Total Issued" />
+              <Bar dataKey="currentlyIssued" fill="#F97316" name="Currently Issued" />
+              <Bar dataKey="returned" fill="#10B981" name="Returned" />
             </BarChart>
           </ResponsiveContainer>
         </div>

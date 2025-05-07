@@ -22,6 +22,7 @@ import CalendarView from "../pages/admin/CalendarView";
 import OverdueReports from "../pages/admin/OverdueReports";
 import BulkUpload from "../pages/admin/BulkUpload";
 import Verify from "../pages/admin/Verify";
+import AdminInfo from "../pages/admin/AdminInfo";
 
 const App = () => {
   return (
@@ -206,6 +207,17 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/info"
+            element={
+              <ProtectedRoute role="admin">
+                <MainLayout>
+                  <AdminInfo />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+
 
           {/* Catch all */}
           <Route
